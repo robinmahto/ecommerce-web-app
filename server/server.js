@@ -1,9 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import routes from './routes';
-dotenv.config();
+import { APP_PORT } from './config';
+import { errorHandler } from './middlewares';
 const app = express();
-const PORT = process.env.APP_PORT || 4000
 
 // middleware
 app.use(express.json())
@@ -13,5 +12,7 @@ app.use(express.urlencoded({extended: true}))
 app.use('/api', routes)
 
 
+app.use(errorHandler)
+
 // APP PORT
-app.listen(PORT, ()=> console.log(`app running on ${PORT}`))
+app.listen(APP_PORT, ()=> console.log(`app running on ${APP_PORT}`))
