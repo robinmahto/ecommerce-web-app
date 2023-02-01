@@ -2,6 +2,7 @@ import express from 'express';
 import routes from './routes';
 import { APP_PORT } from './config';
 import { errorHandler } from './middlewares';
+import { dbConnection } from './db';
 const app = express();
 
 // middleware
@@ -15,4 +16,7 @@ app.use('/api', routes)
 app.use(errorHandler)
 
 // APP PORT
-app.listen(APP_PORT, ()=> console.log(`app running on ${APP_PORT}`))
+app.listen(APP_PORT, ()=> {
+    dbConnection();  // db connection
+    console.log(`app running on ${APP_PORT}`)
+})
