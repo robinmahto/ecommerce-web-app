@@ -3,5 +3,6 @@ dotenv.config();
 
 export const {
     APP_PORT,
-    DEBUG_MODE
+    DEBUG_MODE,
+    MONGODB_URL
 } = process.env;
