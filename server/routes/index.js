@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerController } from '../controllers';
+import { registerController, loginController } from '../controllers';
 const router  = express.Router();
 
 router.get('/', (req, res)=>{
@@ -7,5 +7,6 @@ router.get('/', (req, res)=>{
 })
 
 router.post('/register', registerController.register)
+router.post('/login', loginController.login)
 
 export default router;

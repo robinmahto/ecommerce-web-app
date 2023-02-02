@@ -1,8 +1,7 @@
 import joi from 'joi';
 import bcrypt from 'bcrypt';
-import { customErrorHandler } from '../../services';
+import { customErrorHandler, JwtService } from '../../services';
 import { User } from '../../models';
-import { JwtService } from '../../services';
 
 const registerController = {
      
@@ -41,7 +40,7 @@ const registerController = {
       try {
         const result = await user.save();
         // token
-        access_token = JwtService.sign({_id: result._id, role: result.email});
+        access_token = JwtService.sign({_id: result._id, email: result.email});
 
       } catch (error) {
         return next(error);
