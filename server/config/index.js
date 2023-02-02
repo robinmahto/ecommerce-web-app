@@ -4,5 +4,6 @@ dotenv.config();
 export const {
     APP_PORT,
     DEBUG_MODE,
-    MONGODB_URL
+    MONGODB_URL,
+    JWT_SECRET
 } = process.env;
