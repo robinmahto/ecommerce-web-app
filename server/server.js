@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: true}))
 // routes
 app.use('/api', routes)
 
-
+// custom middleware
 app.use(errorHandler)
 
 // APP PORT
