@@ -9,7 +9,8 @@ router.get('/', (req, res)=>{
 
 router.post('/register', registerController.register);
 router.post('/login', loginController.login);
-router.get('/users', auth, userController.users); // protected routes
 router.post('/refreshtoken', refreshController.refresh);
+router.post('/logout', auth, loginController.logout);
+router.get('/users', auth, userController.users); // protected routes
 
 export default router;
