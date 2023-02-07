@@ -6,5 +6,6 @@ export const {
     DEBUG_MODE,
     MONGODB_URL,
     JWT_ACCESS_SECRET,
-    JWT_REFRESH_SECRET
+    JWT_REFRESH_SECRET,
+    APP_URL
 } = process.env;

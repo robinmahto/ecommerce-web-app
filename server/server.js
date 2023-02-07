@@ -9,17 +9,18 @@ const app = express();
 global.appRoot = path.resolve(__dirname);
 
 // middleware
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));;
 
 // routes
-app.use('/api', routes)
+app.use('/api', routes);
+app.use('/uploads', express.static('uploads'));
 
 // custom middleware
-app.use(errorHandler)
+app.use(errorHandler);
 
 // APP PORT
 app.listen(APP_PORT, ()=> {
     dbConnection();  // db connection
     console.log(`app running on ${APP_PORT}`)
-})
+});

@@ -106,7 +106,7 @@ const productController = {
           return next(new Error('Nothing to delete'))
         }
         // image delete
-        const imagePath = document.image;
+        const imagePath = document._doc.image;
         fs.unlink(`${appRoot}/${imagePath}`, (err)=>{
           if(err){
             return next(customErrorHandler.serverError());
@@ -119,10 +119,26 @@ const productController = {
         let document
         try {
           document = await product.find().select('-updatedAt, -_v').sort({_id: -1});
+          if(!document){
+            return next(new Error('No Document Found'));
+          }
         } catch (error) {
           return next(customErrorHandler.serverError());
         }
         res.json(document);
+      },
+
+      async getSingleProduct(req, res, next){
+          let document
+          try {
+            document = await product.findOne({_id: req.params.id});
+            if(!document){
+              return next(new Error('No Document Found'));
+            }
+          } catch (error) {
+            return next(customErrorHandler.serverError());
+          }
+          res.json(document);
       }
 }
 
