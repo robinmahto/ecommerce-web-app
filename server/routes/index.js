@@ -6,7 +6,7 @@ import {
     refreshController,
     productController
 } from '../controllers';
-import { auth } from '../middlewares';
+import { auth, admin } from '../middlewares';
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -21,6 +21,9 @@ router.post('/logout', auth, loginController.logout);
 router.get('/users', auth, userController.users); // protected routes
 
 // products
-router.post('/product', productController.store);
+router.post('/product', [auth, admin], productController.store);
+router.put('/product/:id', [auth, admin], productController.update);
+router.delete('/product/:id', [auth, admin], productController.destroy);
+router.get('/product', productController.getAllProduct);
 
 export default router;
