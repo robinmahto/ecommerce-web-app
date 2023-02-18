@@ -1,10 +1,11 @@
-import { Navbar, Hero } from '../components';
+import { Navbar, Hero, Features } from '../components';
 
 const Home = () => {
   return (
     <>
       <Navbar/>
        <Hero/>
+       <Features/>
     </>
   )
 }
