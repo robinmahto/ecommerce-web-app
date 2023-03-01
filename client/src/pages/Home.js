@@ -3,7 +3,7 @@ import { Navbar, Hero, Features } from '../components';
 const Home = () => {
   return (
     <>
-      <Navbar/>
+       <Navbar/>
        <Hero/>
        <Features/>
     </>
